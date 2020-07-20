@@ -1,0 +1,94 @@
+#!/bin/bash
+ 
+EDITOR=vim
+PASSWD=/etc/passwd
+RED='\033[0;41;30m'
+STD='\033[0;0;39m'
+
+
+#Muestra el menu general
+function _menuPrincipal()
+{
+    echo "~~~~~~~~~~~~~~~~~~~~~"
+    echo " DHP DATA HARVESTING PROJECT  M A I N - M E N U"
+    echo "~~~~~~~~~~~~~~~~~~~~~"
+    echo "1) IMAGE DATA HARVESTING"
+    echo "2) VIDEO DATA HARVESTING"
+    echo "3) WEB DATA HARVESTING"
+    echo "4) Exit"
+}
+ 
+function _submenu1()
+{
+    echo
+    echo "1) Submenu1-1"
+    echo "2) Submenu1-2"
+    echo "3) Main Menu"
+    echo
+    echo -n "Enter option 3 to go in mean menu: "
+}
+ 
+function _submenu2()
+{
+    echo
+    echo "1) Submenu2-1"
+    echo "2) Submenu2-2"
+    echo "3) Main Menu"
+    echo
+    echo -n "Enter option 3 to go in main menu:: "
+}
+ 
+opc=0
+until [ $opc -eq 4 ]
+do
+    case $opc in
+        1)
+            opc1=0
+            until [ $opc1 -eq 4 ]
+            do
+                case $opc1 in
+                    1)
+                        echo "Welcome to Image Harvesting"
+                        ;;
+                    2)
+                        echo "Welcome to Video data Harvesting"
+                        ;;
+                    3)
+			echo "Welcome to Web data Harvesting"
+                        ;;
+                    *)
+                    _submenu1
+                        ;;
+                esac
+                read opc1
+            done
+            _menuPrincipal
+            ;;
+        2)
+            opc2=0
+            until [ $opc2 -eq 4 ]
+            do
+                case $opc2 in
+                    1)
+                        echo "menu 2 submenu 1"
+                        ;;
+                    2)
+                        echo "menu 2 submenu 2"
+                        ;;
+		    3)
+                        echo "menu 1 submenu 3"
+                        ;;
+                    *)
+                        _submenu2
+                        ;;
+                esac
+                read opc2
+            done
+            _menuPrincipal
+            ;;
+        *)
+            _menuPrincipal
+            ;;
+    esac
+    read opc
+done
